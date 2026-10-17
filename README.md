@@ -86,4 +86,52 @@ Silver layer: data quality checks, null handling, and duplicate removal.
 - The Silver table uses overwrite mode.
 - Production pipelines should use business-approved
   missing-value and deduplication rules.
+
+
+## Phase 4 - Gold Customer Analytics
+
+### Business Requirement
+Calculate the number of unique customers in each city
+for business reporting and analytics.
+
+### Source Delta Table
+workspace.customer_data_pipeline.silver_customers
+
+### Target Delta Table
+workspace.customer_data_pipeline.gold_customers_by_city
+
+### Gold Transformation
+1. Read cleaned customer data from Silver.
+2. Group customers by city.
+3. Count distinct customer IDs.
+4. Validate customer totals.
+5. Save aggregated results as a Delta table.
+6. Read the saved table and verify results.
+
+### Validation Results
+- Silver unique customers: 4
+- Gold total customers: 4
+- Gold city groups: 4
+- Data quality validation: PASSED
+- Saved Delta table validation: PASSED
+
+### Gold Analytics Results
+
+| City | Total Customers |
+|------|-----------------|
+| Austin | 1 |
+| Dallas | 1 |
+| Houston | 1 |
+| Unknown | 1 |
+
+### Notebook
+notebooks/03_gold_customer_analytics.ipynb
+
+### Technology
+- Databricks Free Edition
+- PySpark
+- Delta Lake
+- Unity Catalog
+- Git and GitHub
+
   
