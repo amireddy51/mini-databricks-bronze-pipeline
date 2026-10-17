@@ -51,3 +51,39 @@ Phase 1: Project setup and sample data.
 
 ### Next Phase
 Silver layer: data quality checks, null handling, and duplicate removal.
+
+
+## Phase 3: Silver Layer
+
+### Notebook
+`notebooks/02_silver_customer_cleaning`
+
+### Source Table
+`workspace.customer_data_pipeline.bronze_customers`
+
+### Target Table
+`workspace.customer_data_pipeline.silver_customers`
+
+### Transformations
+1. Read the Bronze Delta table.
+2. Check missing values and duplicate customer IDs.
+3. Remove duplicate customer IDs.
+4. Replace missing email and city values with "Unknown".
+5. Validate cleaned records.
+6. Write the Silver Delta table.
+7. Read back and validate the saved table.
+
+### Validation Results
+- Bronze records: 5
+- Silver records: 4
+- Duplicate customer IDs: 0
+- Null email values: 0
+- Null city values: 0
+- Silver Delta table validation: PASSED
+
+### Notes
+- "Unknown" is a placeholder used for this learning POC.
+- The Silver table uses overwrite mode.
+- Production pipelines should use business-approved
+  missing-value and deduplication rules.
+  
