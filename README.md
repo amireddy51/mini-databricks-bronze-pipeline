@@ -134,4 +134,62 @@ notebooks/03_gold_customer_analytics.ipynb
 - Unity Catalog
 - Git and GitHub
 
+
+## Phase 5 - Production-Style Data Quality Testing
+
+### Objective
+Implement reusable data quality checks and validate
+data consistency across Bronze, Silver, and Gold layers.
+
+### Notebook
+notebooks/04_customer_data_quality.ipynb
+
+### Data Quality Checks
+
+1. Customer ID Null Validation
+   - Verify customer IDs are not null.
+   - Result: PASSED
+
+2. Duplicate Customer ID Validation
+   - Verify customer IDs are unique in Silver.
+   - Result: PASSED
+
+3. Reusable Null Validation Function
+   - Function: validate_not_null()
+   - Tested customer_id and customer_name.
+   - Result: PASSED
+
+4. Reusable Duplicate Validation Function
+   - Function: validate_unique()
+   - Tested customer_id.
+   - Result: PASSED
+
+5. Bronze-Silver-Gold Reconciliation
+   - Bronze raw records: 5
+   - Bronze unique customers: 4
+   - Silver clean records: 4
+   - Gold total customers: 4
+   - Result: PASSED
+
+### Production Engineering Concepts
+- Data quality validation
+- Duplicate detection
+- Reusable PySpark functions
+- Fail-fast assertions
+- Cross-layer data reconciliation
+- Delta Lake data validation
+
+### Technology Stack
+- Databricks Free Edition
+- PySpark
+- Delta Lake
+- Unity Catalog
+- Git and GitHub
+
+### Current Limitations
+- Tests use a small sample dataset.
+- Reconciliation currently validates counts only.
+- Automated scheduling and alerting are not implemented.
+- Reusable functions are currently defined in the notebook.
+
   
